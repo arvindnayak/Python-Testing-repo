@@ -10,8 +10,10 @@ sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
 @pytest.fixture
 def driver():
-    driver = webdriver.Chrome()
-    driver.maximize_window()
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless=new')
+    options.add_argument('--window-size=1920,1080')
+    driver = webdriver.Chrome(options=options)
     yield driver
 
     driver.quit()
