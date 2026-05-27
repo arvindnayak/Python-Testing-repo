@@ -1,0 +1,47 @@
+# Base URL variable for easy environment switching
+@baseUrl = http://localhost:5000/api
+
+### 1. GET all items
+GET {{baseUrl}}/items
+Accept: application/json
+
+### 2. POST create a new item
+POST {{baseUrl}}/items
+Content-Type: application/json
+
+{
+    "name": "Wireless Mouse",
+    "description": "Ergonomic wireless mouse with USB receiver",
+    "price": 25.99,
+    "quantity": 150
+}
+
+### 3. GET a specific item (Assuming ID 1 from the POST above)
+GET {{baseUrl}}/items/1
+Accept: application/json
+
+### 4. PUT to completely update an existing item
+# Note: 'name' is required by your Flask API for PUT requests
+PUT {{baseUrl}}/items/1
+Content-Type: application/json
+
+{
+    "name": "Wireless Mouse - Pro Version",
+    "description": "Ergonomic wireless mouse with Bluetooth & RGB",
+    "price": 35.99,
+    "quantity": 100
+}
+
+### 5. PATCH to partially update an existing item
+# Updating just the price and quantity
+PATCH {{baseUrl}}/items/1
+Content-Type: application/json
+
+{
+    "price": 32.50,
+    "quantity": 90
+}
+
+### 6. DELETE an item
+DELETE {{baseUrl}}/items/1
+Accept: application/json
